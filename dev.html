@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>dev.html</title>
+   <script src="js/load.js"></script>
+   <script>
+
+      loadjs('https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.1/require.js','requirejs');
+
+
+      loadjs.ready('requirejs', {
+
+         success : function(){
+            console.log( 'requirejs loaded' );
+         }
+
+
+      })
+
+      loadjs('https://www.gstatic.com/firebasejs/3.3.0/firebase.js', 'firebase');
+
+      loadjs.ready('firebase', {
+         success: function(){
+
+            console.log(firebase);
+
+            var config = {
+                apiKey: "AIzaSyDv_7OBolNgHafXT1k2vCXQDNwW2fCHgy0",
+                authDomain: "dashboard-859d7.firebaseapp.com",
+                databaseURL: "https://dashboard-859d7.firebaseio.com",
+                storageBucket: ""
+            };
+
+            firebase.initializeApp(config);
+
+         loadjs('js/app-framework.js',function(){console.log('app_framework.js loaded');});
+         loadjs('js/app.js',function(){console.log('app.js loaded');});
+
+         }
+      });
+
+
+
+
+   </script>
+ </head>
+ <body>
+
+
+
+    <form id="app-login" action=""  autocomplete="off" >
+             <label for="usermail">Email</label>
+             <input id="app-login-email" type="" name="email" placeholder="yourname@email.com">
+             <label for="password">Password</label>
+             <input id="app-login-email" type="password" name="password" placeholder="password">
+
+             <input type="submit" value="login">
+    </form>
+
+    <form id="app-signout" action="" autocomplete="off" >
+       <input type="submit" value="signout">
+   </form>
+
+    <dl>
+       <dt>status:
+         <dd id='app-current-status'></dd>
+      </dt>
+
+      <dt>last user:
+       <dd id='app-last-user'></dd>
+      </dt>
+
+      <dt>current user:
+          <dd id='app-current-user'></dd>
+      </dt>
+
+      <dt>user data:
+          <dd id='app-user-data'></dd>
+      </dt>
+
+      <dt>error message:
+          <dd id='app-error-message'></dd>
+      </dt>
+
+    </dl>
+
+ </body>
+</html>
