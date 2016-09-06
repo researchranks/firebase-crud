@@ -1,13 +1,16 @@
-var ammount = 1;
-var firebase_root = firebase.database().ref();
-
 var app = new App();
-app.init();
+
+//require firebase.framework.modeules
+require([
+    'modules/app.init',
+    'modules/app.example',
+    ],function(){
+        app.init();
+});
 
 
-function timestamp(){
-    return Date.now();
-}
+
+
 
 var login = document.getElementById('app-login');
 

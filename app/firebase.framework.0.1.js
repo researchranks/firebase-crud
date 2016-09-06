@@ -5,6 +5,7 @@ var debug_succes;
 var debug_current_user;
 var debug_previous_user;
 var debug_user_data;
+var debug_data;
 
 
 
@@ -14,19 +15,64 @@ var App = function(){
   // the constructor was called without "new".
   return new App();
   }
-   var self = this;
 
-   this.init = function(){
+  var self = this;
+  var display_type;
 
-     self.user.signout();
-     document.getElementById('app-current-status').textContent = self.user.status;
-     document.getElementById('app-current-user').textContent = 'none';
-     document.getElementById('app-last-user').textContent = 'none';
-     document.getElementById('app-error-message').textContent = 'none';
-     document.getElementById('app-user-data').textContent = 'none';
-      return self.user.signout();
 
-   };
+  // this.init = function(){
+  //
+  //   self.user.signout();
+  //   document.getElementById('app-current-status').textContent = self.user.status;
+  //   document.getElementById('app-current-user').textContent = 'none';
+  //   document.getElementById('app-last-user').textContent = 'none';
+  //   document.getElementById('app-error-message').textContent = 'none';
+  //   document.getElementById('app-user-data').textContent = 'none';
+  //    return self.user.signout();
+  //
+  // },
+
+
+
+
+   this.config = function(){
+
+
+   },
+
+
+   this.import = function(){
+
+
+
+   },
+
+
+
+   this.element = {
+
+     create : function(element_type,element_id){
+       var element = document.createElement(element_type);
+       element.setAttribute('id',element_id);
+       document.body.appendChild(element);
+       self.element.hide(element_id);
+     },
+
+     hide : function(element_id){
+       var element = document.getElementById(element_id);
+       display_type = element.style.display;
+       element.style.display = 'none';
+
+     },
+
+    show : function(element_id){
+       var element = document.getElementById(element_id);
+       element.style.display = display_type;
+     }
+
+   },
+
+
 
 
    this.database = {
@@ -43,9 +89,65 @@ var App = function(){
           document.getElementById('app-error-message').textContent = error;
           return error;
         });
+    },
+
+
+
+
+
+
+
+   read : function(){
+
+         var data;
+
+         firebase.database()
+         .ref()
+         .once('value')
+         .then(
+           function(snapshot){
+              debug_user_data = snapshot.val();
+              debug_data = snapshot.val();
+
+           }
+         );
+
+   },
+
+
+    create : function(parent_node,child_node,node_data){
+
+      if(parent_node && child_node && node_data !== null || 'undefined'){
+        firebase.database()
+          .ref( parent_node )
+          .child( child_node )
+          .set( node_data )
+          .then(
+              function(success){
+                      debug_success = success;
+                      console.log(
+                        //success.code,
+                        success.message
+                      );
+                  },
+              function(error){
+                      debug_error = error;
+                      document.getElementById('app-error-message').textContent = error.message;
+
+                      return console.error(
+                         error.message,
+                         error.code
+                       );
+              }
+          );
+      }
+
+
+
     }
 
-  };
+
+  },
 
 
    this.user = {
@@ -69,6 +171,8 @@ var App = function(){
           var user_data_key = '';
           var user_data_value = '';
           var user_data = '';
+          var key;
+          var value;
 
           firebase.database()
           .ref()
@@ -76,48 +180,51 @@ var App = function(){
           .then(
             function(snapshot){
                debug_user_data = snapshot.val();
-                console.log( snapshot.val() );
+               debug_data = snapshot.val();
 
-               for(var i in snapshot.val().users.uid_1 ){
+               //console.log( snapshot.val() );
 
-                var key = i;
-                var data = snapshot.val().users.uid_1;
-                var value = i;
 
-                 user_data +=
-                  '<dt>'+ key + '</dt>'+
-                  '<dd>'+
-                    data[value]+
-                  '</dd>'+
-                  '</dt>';
 
-                 //user_data_value += '<li>'+  data[value]  +'</li>';
-                    // for(var i = 0;  i < snapshot.val().book.uid_1.length; ++i){
-                    //     user_data_value += '<li>'+ key[i] + '</li>';
-                    // }
+              for ( var property in snapshot.val() ){
 
-               }
+
+                key = property;
+                value = snapshot.val()[property];
+
+                console.log( key );
+                console.log( value );
+
+                // for( var data_key in snapshot.val()[property] ){
+                //     console.log( data_key );
+                //     console.log( snapshot.val()[property][data_key] );
+                //   }
+
+              }
+
+              //   user_data +=
+              //    '<dt>'+ key + '</dt>'+
+              //    '<dd>'+
+              //      value+
+              //    '</dd>'+
+              //    '</dt>';
+              // }
+
+
+              //  for(var i in snapshot.val() ){
+               //
+              //   var key = i;
+              //   var data = snapshot.val();
+              //   var value = i;
+               //
+               //
+              //  }
 
 
                 document.getElementById('app-user-data').innerHTML = user_data;
 
             }
           );
-
-
-          // return firebase.database().ref().once(
-          //   'value',function(snapshot){
-          //       console.log(snapshot.val());
-          //       user_data = data.val();
-          //       return data.val();
-          // },function(error){
-          //   console.log(error);
-          //   return error;
-          // }).then(function(){
-          //   console.log( user_data );
-          //   document.getElementById('app-user-data').textContent = user_data;
-          //   return user_data;
-          // });
     },
 
 
@@ -227,7 +334,7 @@ var App = function(){
               );
       }
 
-  };
+  },
 
 
    this.update = {
@@ -255,19 +362,8 @@ var App = function(){
           }
 
         },
-
-
       }
-   };
+   }
 
 
 };
-
-
-
-
-// };
-
-// App.prototype.user.status = (function(){
-//   return Date.now();
-// });
