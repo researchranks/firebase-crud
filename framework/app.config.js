@@ -1,4 +1,5 @@
 define( function(){
+    require(['framework/app.status']);
 
     App.prototype.config = function(){
 
@@ -11,13 +12,13 @@ define( function(){
 
      try{
             console.log( firebase.initializeApp(firebase_config) );
+            this.constructor.prototype.status = true;
         }
         catch(error){
-
+            this.constructor.prototype.status    = error.message;
         }
 
 
     };
-
 
 });

@@ -1,7 +1,17 @@
 define(function(){
-          // require('framework/app.config');
-          // require('framework/app.user');
-          App.prototype.user.status = 'a';
+          App.prototype.user.status = (function(){
+
+              return 'none';
+
+   })();
+
+          return App.prototype.user.status;
+});
+
+
+// require('framework/app.config');
+// require('framework/app.user');
+// App.prototype.user.status = 'none';
 
 // function(){
 
@@ -27,9 +37,7 @@ define(function(){
 // })();
 //           return App.prototype.user.status;
 
-            // return true;
-    // }();
+  // return true;
+// }();
 
-    return App.prototype.user.status;
-
-});
+// return App.prototype.user.status;

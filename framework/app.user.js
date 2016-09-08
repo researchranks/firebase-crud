@@ -1,5 +1,8 @@
 define(function(){
-     App.prototype.user = {};
+     App.prototype.user = {
+
+     };
+
      return App.prototype.user;
 
 });
