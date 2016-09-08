@@ -7,7 +7,7 @@ App.prototype.config = function(){
       storageBucket: ""
   };
 
-  firebase.initializeApp(firebase_config);
+  return firebase.initializeApp(firebase_config);
 
 
 };

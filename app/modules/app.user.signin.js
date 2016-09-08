@@ -5,7 +5,10 @@ App.prototype.user.signin = function(user_email,user_password){
          .signInWithEmailAndPassword(user_email,user_password)
          .then(
              function(success){
-                     debug_success = success;
+
+              // debug_success = success;
+
+              console.log(firebase.auth().currentUser);
 
               //  this.update.user.status();
               //  this.update.user.email();
@@ -23,10 +26,10 @@ App.prototype.user.signin = function(user_email,user_password){
 
                  },
              function(error){
-                     debug_error = error;
+                     // debug_error = error;
 
-                     // document.getElementById('app-error-message').textContent = error.message;
-                     //
+                     document.getElementById('app-error-message').textContent = error.message;
+
 
                       return console.error(
                         error.message,

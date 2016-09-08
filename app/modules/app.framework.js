@@ -9,11 +9,11 @@ var App = function(){
   var display_type;
 };
 
-// var debug_error;
-// var debug_succes;
-// var debug_current_user;
-// var debug_previous_user;
-// var debug_user_data;
-// var debug_data;
+var debug_error;
+var debug_succes;
+var debug_current_user;
+var debug_previous_user;
+var debug_user_data;
+var debug_data;
 
 var app = new App();

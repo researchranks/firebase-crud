@@ -1,3 +1,7 @@
+define(function(){
+
+  require('framework/app.user');
+
 App.prototype.user.signout = function(){
 
   var current_user = '';
@@ -55,3 +59,7 @@ App.prototype.user.signout = function(){
                 }
          );
 };
+
+        return App.prototype.user.signout;
+
+});
