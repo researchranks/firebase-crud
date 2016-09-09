@@ -2,6 +2,7 @@ define(function(){
     App.prototype.user.data = function(){
 
      var user_data = '';
+     var user_uid = firebase.auth().currentUser.uid;
 
      function process(key,value) {
           if(typeof(value) == 'object'){
@@ -21,38 +22,26 @@ define(function(){
      }
 
         var query = firebase.database()
-        .ref('users').orderByKey();
+        .ref('users/'+user_uid).orderByKey();
 
         query.once('value')
         .then(
           function(snapshot){
-            var data = snapshot.val();
-            snapshot.forEach(function(users){
-                user_id = users.key;
-                profile_keys = Object.keys( users.exportVal() );
 
-                 user_data +=
-                 '<mark>' +
-                    user_id +
-                 '</mark>';
+              data =  snapshot.exportVal();
 
-                 for(var i in profile_keys ){
+              for(var value in data ){
+                  user_data +=
+                  '<dt>'+
+                        value+
+                      '<dd>'+
+                      data[ value ]+
+                      '</dd>'+
+                  '</dt>';
 
-                      var profile_key = profile_keys[i];
-                      var profile_data = profile_key;
+             }
 
-                    user_data +=
-                    '<dl>' +
-                    '<dt>' +
-                         profile_key +
-                    '</dt>' +
-                         '<dd>' +
-                              data [user_id] [ profile_data ] +
-                         '</dd>' +
-                    '</dl>'
-                    ;
-                 }
-            });
+
 
             App.prototype.element.get('app-user-data').innerHTML = user_data;
         //
