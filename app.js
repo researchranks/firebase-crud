@@ -20,14 +20,20 @@ require([
     // 'framework/app',
     'framework/app.status',
     'framework/app.config',
+    'framework/app.element',
 
     'framework/app.user',
     'framework/app.user.email',
     'framework/app.user.data',
     'framework/app.user.status',
     'framework/app.user.signin',
+    'framework/app.user.signout',
+
+
+    'framework/app.view.login',
 
 
 ],function(){
         app.config();
+        app.user.signout();
 });

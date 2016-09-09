@@ -1,9 +1,5 @@
 define(function(){
-
-
   App.prototype.user.signin = function(user_email,user_password){
-
-
 
       firebase
         .auth()
@@ -23,14 +19,13 @@ define(function(){
               if(success.email !== null || 'undefined'){
                 console.log(app);
                   App.prototype.user.status = 'logged in';
-                  //this.constructor.prototype.user.status = 'logged in';
               }
 
               //this.update.user.email();
               App.prototype.user.data();
 
-    document.getElementById('app-error-message').textContent = 'none';
-    document.getElementById('app-current-status').textContent = App.prototype.user.status;
+    App.prototype.element.get('app-error-message').textContent = 'none';
+    App.prototype.element.get('app-current-status').textContent = App.prototype.user.status;
 
 
 
@@ -50,9 +45,9 @@ define(function(){
             function(error){
                     debug_error = error;
 
-                    this.constructor.prototype.user.status = error.message;
+                    App.prototype.user.status = error.message;
 
-                    document.getElementById('app-error-message').textContent = error.message;
+                    App.prototype.element.get('app-error-message').textContent = error.message;
 
 
                      return console.error(

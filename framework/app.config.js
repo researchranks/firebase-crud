@@ -15,7 +15,7 @@ define( function(){
             this.constructor.prototype.status = true;
         }
         catch(error){
-            this.constructor.prototype.status    = error.message;
+            this.constructor.prototype.status = error.message;
         }
 
 
