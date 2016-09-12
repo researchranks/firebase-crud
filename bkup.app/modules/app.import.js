@@ -1,5 +1,0 @@
-App.prototype.import = function(){
-
-
-
-};

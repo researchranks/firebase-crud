@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html>
- <head>
-   <title>dev.html</title>
-      <script type="text/javascript" data-main="app.js" src="lib/load.3.0.0.js">
-          // var loadjs = require('loadjs');
-          // loadjs(['/app.js'],'app');
-          // loadjs.ready('app',{
-          //   success : function(){console.log(true)};
-          //   error : function(){console.log(false)};
-          // });
-      </script>
-   <script type="text/javascript" data-main="app.js" src="lib/require.2.3.1.js"></script>
-  </head>
- <body>
+define( function(){
+
+
+
+  var html_data = (function(){/*
+
+    <p id="app-signup">signup</p>
+
 
     <form id="app-login" action=""  autocomplete="off" >
              <label for="usermail">Email</label>
@@ -49,6 +42,7 @@
       </dt>
 
     </dl>
+  */});
 
- </body>
-</html>
+  return App.prototype.util.template(html_data);
+});

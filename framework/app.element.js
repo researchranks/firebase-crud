@@ -3,6 +3,10 @@ define( function(){
 
       get : function(element_id){
 
+          if(element_id === 'body'){
+              return document.querySelectorAll(element_id)[0];
+          }
+
           if(element_id.match(/\[/)){
              return document.querySelectorAll(element_id)[0];
           }
