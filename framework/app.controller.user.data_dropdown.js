@@ -6,10 +6,20 @@ define(function(){
         var user_option_value = '';
         var user_options;
         var data;
+        var firebase_url;
+        var user_current_option;
         var log = function(){
             console.log(this);
         };
 
+    //     var show_user_option_value = function(user_uid,current_value){
+    //         firebase_url = 'users/'+user_uid+'/'+current_value;
+    //         firebase.database().ref(firebase_url).on('value',function(data){
+    //           // console.log( data.val() );
+    //           //
+    //           user_input.value = data.val();
+    //       });
+    //   };
 
 
 
@@ -77,6 +87,8 @@ define(function(){
                 });
         };
 
+
+
           require([
               'framework/app.view.user.data.dropdown',
           ],function(html_data){
@@ -91,23 +103,66 @@ define(function(){
               App.prototype.util.element
               .get('app-user-data-dropdown')
               .addEventListener('change',function(){
-                  var current_value = this.options[this.selectedIndex].textContent;
+                 user_current_option = this.options[this.selectedIndex].textContent;
+
                   var user_input = App.prototype.util
                   .element.get('app-user-data-option-value');
 
+                  var user_input_status = App.prototype.util
+                  .element.get('app-user-data-option-status');
 
-                  firebase_url = 'users/'+user_uid+'/'+current_value;
+                  user_input_status.style.display = 'none';
 
+                  firebase_url = 'users/'+user_uid+'/'+user_current_option;
                   firebase.database().ref(firebase_url).on('value',function(data){
-                        // console.log( data.val() );
-                        //
-                        user_input.value = data.val();
-                    });
-
-                  console.log(this.options[this.selectedIndex].textContent);
+                    // console.log( data.val() );
+                    //
+                    user_input.value = data.val();
+                });
 
 
+                 user_input.addEventListener('change',function(){
+                        user_input_status.style.display = 'block';
+                        user_input_status.textContent = 'update value?';
+                        user_input_status.style.background = '#efebad';
+                    user_input_status.addEventListener('click',function(){
 
+
+                        var firebase_updated_data = function(key,value){
+                                    var data = {};
+                                    data[key] = value;
+                                    return data;
+                        };
+
+
+                        firebase_url = 'users/'+user_uid+'/';
+
+                        console.log( user_current_option );
+                        console.log( user_input.value );
+
+                            firebase.database()
+                            .ref(firebase_url)
+                            .update(firebase_updated_data(
+                                user_current_option,
+                                user_input.value
+                            )
+                            )
+                             .then(function(){
+                                 user_input_status.textContent = 'done';
+                                 user_input_status.style.background = '#afe3a5';
+                                 // 
+                                //  console.log(user_current_option);
+                                //  console.log(user_input.value);
+
+                             });
+
+                        },false);
+                  },false);
+
+
+
+
+                //   console.log(this.options[this.selectedIndex].textContent);
                   //console.log(this.options[this.selectedIndex].id);
               });
 

@@ -5,6 +5,7 @@ define( function(){
     </select>
 
     <input id="app-user-data-option-value"></input>
+    <p id="app-user-data-option-status"></p>
 
 
   */});
