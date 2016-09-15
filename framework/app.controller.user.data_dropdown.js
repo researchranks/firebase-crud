@@ -150,7 +150,7 @@ define(function(){
                              .then(function(){
                                  user_input_status.textContent = 'done';
                                  user_input_status.style.background = '#afe3a5';
-                                 // 
+
                                 //  console.log(user_current_option);
                                 //  console.log(user_input.value);
 
