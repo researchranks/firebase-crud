@@ -12,19 +12,6 @@ define(function(){
             console.log(this);
         };
 
-    //     var show_user_option_value = function(user_uid,current_value){
-    //         firebase_url = 'users/'+user_uid+'/'+current_value;
-    //         firebase.database().ref(firebase_url).on('value',function(data){
-    //           // console.log( data.val() );
-    //           //
-    //           user_input.value = data.val();
-    //       });
-    //   };
-
-
-
-
-
 
         var get_firebase_query = function(){
                 user_uid = firebase.auth().currentUser.uid;
