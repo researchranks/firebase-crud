@@ -1,11 +1,11 @@
 define(function(){
     App.prototype.controller.signin = function(){
 
-        var login = App.prototype.element.get('app-login');
-        var signout =App.prototype.element.get('app-signout');
-        var signup = App.prototype.element.get('app-signup');
+        var login = App.prototype.util.element.get('app-login');
+        var signout =App.prototype.util.element.get('app-signout');
+        var signup = App.prototype.util.element.get('app-signup');
 
-       signup.addEventListener('click', function(event){
+     signup.addEventListener('click', function(event){
                 event.preventDefault();
 
                 require([
@@ -13,7 +13,7 @@ define(function(){
                 ],function(html_data){
                     App.prototype.user.view = '';
                     App.prototype.user.view = html_data;
-                    App.prototype.element.get('body').innerHTML = html_data;
+                    App.prototype.util.element.get('body').innerHTML = html_data;
                     App.prototype.controller.signup();
                     // require(['framework/app.controller.signup']);
                 });
@@ -27,12 +27,13 @@ define(function(){
             }, false);
 
 
-    login.addEventListener('submit', function(event){
+     login.addEventListener('submit', function(event){
             event.preventDefault();
             console.log( Date.now() );
             var login_email = login[0].value;
             var login_password = login[1].value;
-            app.user.signin(login_email,login_password);
+            App.prototype.controller.user.signin(login_email,login_password);
+            //app.user.signin(login_email,login_password);
 
             login[0].value = '';
             login[1].value = '';
@@ -45,15 +46,20 @@ define(function(){
                 console.log( Date.now() );
                     App.prototype.user.signout();
                     login.reset();
-            App.prototype.element.get('app-current-status').textContent = firebase.auth().currentUser || 'signed out';
+            App.prototype.util.element.get('app-current-status').textContent = firebase.auth().currentUser || 'signed out';
         }, false);
 
         console.log('app_controller_signup');
 
     };
 
+
+
+
+
     return {
         app_contorller_signin : App.prototype.controller.signin
+
     };
 
 });

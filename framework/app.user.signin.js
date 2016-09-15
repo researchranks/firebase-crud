@@ -24,8 +24,8 @@ define(function(){
               //this.update.user.email();
               App.prototype.user.data();
 
-    App.prototype.element.get('app-error-message').textContent = 'none';
-    App.prototype.element.get('app-current-status').textContent = App.prototype.user.status;
+    App.prototype.util.element.get('app-error-message').textContent = 'none';
+    App.prototype.util.element.get('app-current-status').textContent = App.prototype.user.status;
 
 
 
@@ -47,7 +47,7 @@ define(function(){
 
                     App.prototype.user.status = error.message;
 
-                    App.prototype.element.get('app-error-message').textContent = error.message;
+                    App.prototype.util.element.get('app-error-message').textContent = error.message;
 
 
                      return console.error(

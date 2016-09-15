@@ -1,6 +1,6 @@
 define(
   function(){
-        App.prototype.status = function(){
+        App.prototype.util.status.firebase = function(){
 
 
           try{
@@ -19,6 +19,6 @@ define(
 
         }();
 
-      return App.prototype.status;
+      return App.prototype.util.status.firebase;
     }
 );

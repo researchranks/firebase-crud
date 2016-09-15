@@ -41,9 +41,7 @@ define(function(){
 
              }
 
-
-
-            App.prototype.element.get('app-user-data').innerHTML = user_data;
+            App.prototype.util.element.get('app-user-data').innerHTML = user_data;
         //
        });
     };

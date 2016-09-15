@@ -1,8 +1,8 @@
 define(function(){
     App.prototype.controller.signup = function(){
 
-        var back_to_signin = App.prototype.element.get('app-signin');
-        var signup = App.prototype.element.get('app-signup');
+        var back_to_signin = App.prototype.util.element.get('app-signin');
+        var signup = App.prototype.util.element.get('app-signup');
 
     signup.addEventListener('submit', function(event){
             event.preventDefault();
@@ -35,7 +35,7 @@ define(function(){
                 ],function(html_data){
                     App.prototype.user.view = '';
                     App.prototype.user.view = html_data;
-                    App.prototype.element.get('body').innerHTML = html_data;
+                    App.prototype.util.element.get('body').innerHTML = html_data;
                     App.prototype.controller.signin();
                     // require(['framework/app.controller.signup']);
                 });

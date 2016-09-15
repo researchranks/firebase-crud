@@ -2,6 +2,8 @@ define( function(){
 
       App.prototype.controller = {};
 
-      return App.prototype.controller;
+      return {
+        app_controller : App.prototype.controller
+      };
 
   });

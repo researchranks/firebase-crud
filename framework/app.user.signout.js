@@ -16,7 +16,7 @@ define(function(){
       };
 
       if( typeof(current_user()) === 'object' ){
-          App.prototype.element.get('app-error-message').textContent = 'none';
+          App.prototype.util.element.get('app-error-message').textContent = 'none';
           previous_user = current_user();
       }else{
          current_user = 'n/a';
@@ -40,15 +40,15 @@ define(function(){
 
                    App.prototype.user.status = 'Signed Out';
 
-                   App.prototype.element.get('app-last-user').textContent = previous_user.email;
+                   App.prototype.util.element.get('app-last-user').textContent = previous_user.email;
 
 
-                   App.prototype.element.get('app-current-user').textContent = 'none';
+                   App.prototype.util.element.get('app-current-user').textContent = 'none';
 
-                   App.prototype.element.get('app-user-data').textContent = 'none';
-                   App.prototype.element.get('app-user-data').innerHTML = '';
+                   App.prototype.util.element.get('app-user-data').textContent = 'none';
+                   App.prototype.util.element.get('app-user-data').innerHTML = '';
 
-                     App.prototype.element.get('app-current-status').textContent = 'signed out of ' + previous_user.email;
+                     App.prototype.util.element.get('app-current-status').textContent = 'signed out of ' + previous_user.email;
                         return console.log(
                           'Signed Out Of '+
                           previous_user.email);
@@ -59,11 +59,11 @@ define(function(){
             App.prototype.user.status = 'Signed Out';
 
 
-            App.prototype.element.get('app-current-user').textContent = 'Signed Out';
+            App.prototype.util.element.get('app-current-user').textContent = 'Signed Out';
 
-                        App.prototype.element.get('app-user-data').textContent = 'Signed Out';
-                        App.prototype.element.get('app-last-user').textContent = 'Signed Out';
-                        App.prototype.element.get('app-current-status').textContent = 'Signed Out';
+                        App.prototype.util.element.get('app-user-data').textContent = 'Signed Out';
+                        App.prototype.util.element.get('app-last-user').textContent = 'Signed Out';
+                        App.prototype.util.element.get('app-current-status').textContent = 'Signed Out';
 
                     },
            function(error){

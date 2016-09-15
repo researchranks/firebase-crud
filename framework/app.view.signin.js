@@ -21,7 +21,9 @@ define( function(){
    </form>
 
     <dl>
+
        <dt>status:
+        <dd id='app-online-status'></dd>
          <dd id='app-current-status'></dd>
       </dt>
 
