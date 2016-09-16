@@ -1,3 +1,6 @@
+//AppName_<Major>.<Minor>.<Patch/Upgrade>.<BuildNo>
+//firebase_crud 1.0.0.03
+
 var App = function(){
   if (!(this instanceof App) ){
      return new App();

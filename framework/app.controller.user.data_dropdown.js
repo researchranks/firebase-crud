@@ -9,6 +9,10 @@ define(function(){
         var firebase_url;
         var user_current_option;
 
+        var log = function(){
+            console.log(this);
+        };
+
         var get_firebase_query = function(){
                 user_uid = firebase.auth().currentUser.uid;
 
