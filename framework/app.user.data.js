@@ -15,7 +15,7 @@ define(function(){
          for (var i in o) {
              func.apply(this,[i,o[i]]);
              if (o[i] !== null && typeof(o[i])=="object") {
-                 //going on step down in the object tree!!
+                 //call the function to access the tree data
                  traverse(o[i],func);
              }
          }

@@ -13,7 +13,6 @@ define(function(){
             firebase.auth().createUserWithEmailAndPassword(signup_email,signup_password).then(function(success){
                 console.log(success);
             });
-            //App.prototype.user.signin(signup_email,signup_password);
 
             signup[0].value = '';
             signup[1].value = '';
@@ -37,20 +36,15 @@ define(function(){
                     App.prototype.user.view = html_data;
                     App.prototype.util.element.get('body').innerHTML = html_data;
                     App.prototype.controller.signin();
-                    // require(['framework/app.controller.signup']);
                 });
 
 
 
 
         });
-
-        console.log('app_controller_signup');
-
     };
 
     return {
-
         app_controller_signup : App.prototype.controller.signup
     };
 

@@ -10,6 +10,8 @@ define( function(){
 
     <p id="app-user-data-dropdown-container"> app-user-data-dropdown-container </p>
 
+    <p id="app-user-data-input-container"> app-user-data-input </p>
+    
     <p id="app-user-container"> app-user-container </p>
 
 

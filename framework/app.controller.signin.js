@@ -15,51 +15,31 @@ define(function(){
                     App.prototype.user.view = html_data;
                     App.prototype.util.element.get('body').innerHTML = html_data;
                     App.prototype.controller.signup();
-                    // require(['framework/app.controller.signup']);
                 });
-
-                // require([
-                //         'framework/app.view.signup.js',
-                //         'framework/app.controller.signup',
-                //     ]);
-
-
             }, false);
 
 
      login.addEventListener('submit', function(event){
             event.preventDefault();
-            console.log( Date.now() );
             var login_email = login[0].value;
             var login_password = login[1].value;
             App.prototype.controller.user.signin(login_email,login_password);
-            //app.user.signin(login_email,login_password);
-
             login[0].value = '';
             login[1].value = '';
-
         }, false);
 
 
         signout.addEventListener('submit', function(event){
                 event.preventDefault();
-                console.log( Date.now() );
-                    App.prototype.user.signout();
-                    login.reset();
-            App.prototype.util.element.get('app-current-status').textContent = firebase.auth().currentUser || 'signed out';
+                App.prototype.controller.signout();
+                login.reset();
+                App.prototype.util.element.get('app-current-status')
+                .textContent = firebase.auth().currentUser || 'signed out';
         }, false);
-
-        console.log('app_controller_signup');
-
     };
-
-
-
-
 
     return {
         app_contorller_signin : App.prototype.controller.signin
-
     };
 
 });

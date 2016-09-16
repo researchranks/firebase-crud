@@ -43,11 +43,14 @@ require([
     'framework/app.config',
 
     'framework/app.controller',
+
     'framework/app.controller.signin',
     'framework/app.controller.signup',
+    'framework/app.controller.signout',
+
     'framework/app.controller.user',
     'framework/app.controller.user.signin',
-
+    'framework/app.controller.user.input',
 
 
     'framework/app.user',
@@ -56,7 +59,7 @@ require([
     // 'framework/app.user.data',
     'framework/app.user.status',
     // 'framework/app.user.signin',
-    'framework/app.user.signout',
+    // 'framework/app.user.signout',
 
 ],function(){
 
